@@ -12,17 +12,17 @@ and open the template in the editor.
     </head>
     <body>
         <div id="header"> Fai i tuoi calcoli</div>
-        </br>
-        <div id="totalone"> Totalone: <span id="sp_totalone">0</span></div>
-        </br>
+        <br>
+        <div id="totalone">Totalone: <span id="sp_totalone">0</span></div>
+        <br>
         <div id="content">
-            <input id="in_num1"></br>
-            <input id="in_num2"></br></br>
+            <input id="in_num1"><br>
+            <input id="in_num2"><br><br>
             <button id="bt_somma" onclick="somma()">+</button>
             <button id="bt_sottr" onclick="sottr()">-</button>
             <button id="bt_molt" onclick="molt()">*</button>
-            <button id="bt_divis" onclick="divis()">/</button></br></br>
-            <div id="div_risult">0</div></br>
+            <button id="bt_divis" onclick="divis()">/</button><br><br>
+            <div id="div_risult">0</div><br>
 
         </div>
         <div id="footer"> Buona Giornata! </div>
@@ -32,39 +32,71 @@ and open the template in the editor.
 
 
 <script>
+
     var num1;
     var num2;
     var risult;
     var totalone = 0;
+    var okDati;
+
+    function isVuota(testo) {
+        if (testo.length === 0)
+            return true;
+        else
+            return false;
+    }
+
+    function checkDati() {
+        //verifico num1 e num2
+        // e ritorno true se presenti solo numeri
+        // altrimenti ritorno false
+        if (isNaN(num1) || isNaN(num2) || isVuota(num1) || isVuota(num2)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     function faseInput() {
         num1 = document.getElementById("in_num1").value;
         num2 = document.getElementById("in_num2").value;
-        //attenzione è ancora testo!!!!!
-        num1 = parseFloat(num1);
-        num2 = parseFloat(num2);
-
+        okDati = checkDati();
+        //verifico se ok dati e poi valuto se trasformare in numeri
+        if (okDati === true) {
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+        } else {
+            alert("ATTENZIONE!! Dati non corretti");
+        }
     }
 
     function faseOutput() {
         document.getElementById("div_risult").innerHTML = risult;
-        document.getElementById("totalone").innerHTML = totalone;
-
+        document.getElementById("sp_totalone").innerHTML = totalone;
     }
 
 
     function somma() {
         // richiamo il testo faseInput
-        faseInput();        
-        risult = num1 + num2;
-        totalone = totalone + risult;
-        //richiamo il metodo faseOutput
-        faseOutput();
+        faseInput();
+        if (okDati) {
+            risult = num1 + num2;
+            totalone = totalone + risult;
+            //richiamo il metodo faseOutput
+            faseOutput();
+        }
 
     }
 
     function sottr() {
-
+        // richiamo il testo faseInput
+        faseInput();
+        if (okDati) {
+            risult = num1 - num2;
+            totalone = totalone + risult;
+            //richiamo il metodo faseOutput
+            faseOutput();
+        }
     }
 
     function molt() {
