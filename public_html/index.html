@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CALCOLATRICE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="header"> Fai i tuoi calcoli</div>
+        </br>
+        <div id="totalone"> Totalone: <span id="sp_totalone">0</span></div>
+        </br>
+        <div id="content">
+            <input id="in_num1"></br>
+            <input id="in_num2"></br></br>
+            <button id="bt_somma" onclick="somma()">+</button>
+            <button id="bt_sottr" onclick="sottr()">-</button>
+            <button id="bt_molt" onclick="molt()">*</button>
+            <button id="bt_divis" onclick="divis()">/</button></br></br>
+            <div id="div_risult">0</div></br>
+
+        </div>
+        <div id="footer"> Buona Giornata! </div>
+
+    </body>
+</html>
+
+
+<script>
+    var num1;
+    var num2;
+    var risult;
+    var totalone = 0;
+
+    function faseInput() {
+        num1 = document.getElementById("in_num1").value;
+        num2 = document.getElementById("in_num2").value;
+        //attenzione è ancora testo!!!!!
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+
+    }
+
+    function faseOutput() {
+        document.getElementById("div_risult").innerHTML = risult;
+        document.getElementById("totalone").innerHTML = totalone;
+
+    }
+
+
+    function somma() {
+        // richiamo il testo faseInput
+        faseInput();        
+        risult = num1 + num2;
+        totalone = totalone + risult;
+        //richiamo il metodo faseOutput
+        faseOutput();
+
+    }
+
+    function sottr() {
+
+    }
+
+    function molt() {
+
+    }
+
+    function divis() {
+
+    }
+
+
+
+
+
+
+
+
+</script>
