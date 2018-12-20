@@ -61,33 +61,18 @@ function somma() {
 
 }
 
-function sottr() {
+function calcola(op) {
     // richiamo il testo faseInput
     faseInput();
     if (okDati) {
-        risult = num1 - num2;
-        totalone = totalone + risult;
-        //richiamo il metodo faseOutput
-        faseOutput();
-    }
-}
-
-function molt() {
-    // richiamo il testo faseInput
-    faseInput();
-    if (okDati) {
-        risult = num1 * num2;
-        totalone = totalone + risult;
-        //richiamo il metodo faseOutput
-        faseOutput();
-    }
-}
-
-function divis() {
-    // richiamo il testo faseInput
-    faseInput();
-    if (okDati) {
-        risult = num1 / num2;
+        if (op === "+")
+            risult = num1 + num2;
+        if (op === "-")
+            risult = num1 - num2;
+        if (op === "*")
+            risult = num1 * num2;
+        if (op === "/")
+            risult = num1 / num2;
         totalone = totalone + risult;
         //richiamo il metodo faseOutput
         faseOutput();
